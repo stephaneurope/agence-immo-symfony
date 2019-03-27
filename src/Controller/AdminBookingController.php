@@ -9,24 +9,44 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Service\PaginationService;
 
 class AdminBookingController extends AbstractController
 {
     /**
      * permet d'afficher la liste des réservations
      * 
-     * @Route("/admin/bookings", name="admin_booking_index")
+     * @Route("/admin/bookings/{page<\d+>?1}", name="admin_booking_index")
      *
      * @param BookingRepository $repo
      * @return Response
      */
-    public function index(BookingRepository $repo)
+    public function index(BookingRepository $repo, $page, PaginationService $pagination)
     {
+        $pagination->setEntityClass(Booking::class)
+                   ->setPage($page);
+                  
+                   
+           $bookings = $pagination->getData();
+          
+
+        //$limit = 10;
+        //$start = $page * $limit - $limit;
+        // 1 * 10 = 10 - 10 = 0
+        // 2 * 10 = 20 - 10 = 10
+
+        //$total = count($repo->findAll());
+
+        //$pages = ceil($total / 10);
+
         //$repo = $this->getDoctrine()->getRepository(Booking::class);
         //comments = $repo->findAll();
 
         return $this->render('admin/booking/index.html.twig', [
-            'bookings' => $repo->findAll(),
+            //'bookings' => $pagination->getData(),
+            //'pages' => $pagination->getPages(),
+            //'page' =>$page
+            'pagination' => $pagination
         ]);
     }
     

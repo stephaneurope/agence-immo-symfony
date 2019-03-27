@@ -20,7 +20,7 @@
           </thead>
 
           <tbody>
-              {% for ad in ads %}
+              {% for ad in pagination.data %}
                   
              
               <tr>
@@ -48,5 +48,8 @@
 
 
     </table>
+
+   {{pagination.display()}} 
+
 </div>
 {% endblock %}

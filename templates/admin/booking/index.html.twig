@@ -21,7 +21,7 @@
           </thead>
 
           <tbody>
-              {% for booking in bookings %}
+              {% for booking in pagination.data %}
                   
              
               <tr>
@@ -48,6 +48,8 @@
 
 
     </table>
+
+    {{pagination.display()}} 
 
 </div>
 
