@@ -6,9 +6,9 @@
 
         <meta name="viewport" content="width=device-width, user-scalable=no">
 
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/app.css">
+        
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -17,9 +17,7 @@
   
 
         {% block body %}{% endblock %}
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/popper.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
+        <script src="{{ asset('build/css/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
      {% include 'admin/partials/footer.html.twig' %}
