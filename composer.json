@@ -78,9 +78,6 @@
         ]
     
     },
-
-    
-    
     "conflict": {
         "symfony/symfony": "*"
     },
